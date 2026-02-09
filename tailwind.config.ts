@@ -1,5 +1,5 @@
 // tailwind.config.ts
-// @ts-ignore: module has no types
+
 import tailwindcssAnimate from "tailwindcss-animate";
 import type { Config } from "tailwindcss";
 
@@ -52,7 +52,7 @@ const config: Config = {
     },
   },
   plugins: [
-    // @ts-ignore: module has no types
+   
     tailwindcssAnimate
   ],
 };
