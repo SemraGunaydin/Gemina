@@ -1,19 +1,25 @@
-import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
+// proxy.ts
+import { clerkMiddleware } from "@clerk/nextjs/server";
+import type { NextRequest } from "next/server";
 
-const isPublicRoute = createRouteMatcher([
-  '/',
-  '/api/webhooks/clerk'
-]);
+const publicRoutes = ['/', '/api/webhooks/clerk', '/api/webhooks/stripe'];
 
-export default clerkMiddleware(async (auth, req) => {
-  if (!isPublicRoute(req)) {
-    await auth.protect();
+function isPublicRoute(req: NextRequest) {
+  return publicRoutes.includes(req.nextUrl.pathname);
+}
+
+export async function proxy(req: NextRequest) {
+  if (isPublicRoute(req)) {
+    return; // public route, auth kontrolüne gerek yok
   }
-});
+
+  // auth kontrolü
+  return clerkMiddleware()(req);
+}
 
 export const config = {
   matcher: [
-    '/((?!_next|.*\\..*).*)',
-    '/(api|trpc)(.*)'
+    "/((?!.+\\.[\\w]+$|_next).*)",
+    "/api/(.*)",
   ],
 };
