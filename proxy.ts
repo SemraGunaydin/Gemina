@@ -8,14 +8,17 @@ function isPublicRoute(req: NextRequest) {
   return publicRoutes.includes(req.nextUrl.pathname);
 }
 
-export async function proxy(req: NextRequest) {
-  if (isPublicRoute(req)) {
-    return; // public route, auth kontrolüne gerek yok
-  }
+export const proxy = clerkMiddleware(
+  async (auth, req) => {
+    if (isPublicRoute(req)) {
+      return; // public route, auth kontrolü yok
+    }
 
-  // auth kontrolü
-  return clerkMiddleware()(req);
-}
+    // Private route için auth kontrolü
+    await auth.protect(); 
+  },
+  {} // options
+);
 
 export const config = {
   matcher: [
