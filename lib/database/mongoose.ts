@@ -7,7 +7,11 @@ interface MongooseConnection {
   promise: Promise<Mongoose> | null;
 }
 
-const cached: MongooseConnection = global.mongoose || {
+declare global {
+  var mongoose: MongooseConnection | undefined;
+}
+
+const cached = global.mongoose || {
   conn: null,
   promise: null,
 };
@@ -15,13 +19,15 @@ const cached: MongooseConnection = global.mongoose || {
 export const connectToDatabase = async () => {
   if (cached.conn) return cached.conn;
 
-  if (!MONGODB_URL) throw new Error("Missing MONGODB_URL");
+  if (!MONGODB_URL) {
+    throw new Error("Missing MONGODB_URL");
+  }
 
   cached.promise =
     cached.promise ||
     mongoose.connect(MONGODB_URL, {
-      dbName: 'genima',
-      bufferCommands: false
+      dbName: "genima",
+      bufferCommands: false,
     });
 
   cached.conn = await cached.promise;
