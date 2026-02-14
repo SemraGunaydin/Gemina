@@ -37,6 +37,7 @@
     "postcss": "^8.5.6",
     "shadcn": "^3.8.4",
     "tailwindcss": "^3.4.4",
+    "ts-node": "^10.9.2",
     "typescript": "^5"
   }
 }
