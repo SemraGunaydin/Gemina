@@ -180,7 +180,9 @@ export const aspectRatioOptions = {
     width: 1000,
     height: 1778,
   },
-};
+} as const; // <--- Buraya aldık, artık tüm anahtarlar kesinleşti.
+
+export type AspectRatioKey = keyof typeof aspectRatioOptions;
 
 export const defaultValues = {
   title: "",

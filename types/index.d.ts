@@ -17,11 +17,18 @@ export type UpdateUserParams = {
 
 // ====== IMAGE PARAMS
 export type ImageType = {
+  _id: string;
   aspectRatio?: string;
   width?: number;
   height?: number;
   title?: string;
   url?: string;
+  secureURL?: string;
+  color?: string;
+  prompt?: string;
+  publicId?: string;
+  transformationType?: string;
+  config?: Transformations | null;
 };
 
 export type AddImageParams = {
@@ -134,7 +141,7 @@ export type TransformationFormProps = {
 };
 
 export type TransformedImageProps = {
-  image: ImageType;
+  image: ImageType | null;
   type: string;
   title: string;
   transformationConfig: Transformations | null;

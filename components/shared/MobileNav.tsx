@@ -13,7 +13,7 @@ const MobileNav = () => {
     <header className="header">
       <Link href="/" className="flex items-center gap-2 md:py-2">
         <Image
-          src="/assets/images/Gemini_logo.png"
+          src="/assets/images/Genima_logo.png"
           width={180}
           height={28}
           alt="logo"

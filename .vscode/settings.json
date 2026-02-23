@@ -1,0 +1,20 @@
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.formatOnType": false,
+  "files.autoSave": "onFocusChange",
+  "editor.acceptSuggestionOnEnter": "on", // Enter sorununu çözer
+  "editor.suggestSelection": "recentlyUsed",
+  "editor.smartSelect.selectSubwords": false,
+  "editor.multiCursorModifier": "alt",
+  "editor.tabCompletion": "on",
+  "editor.suggest.snippetsPreventQuickSuggestions": false,
+  "editor.quickSuggestionsDelay": 10,
+  "editor.suggestOnTriggerCharacters": true,
+  "editor.inlineSuggest.enabled": true,
+  "editor.quickSuggestions": {
+    "other": true,
+    "comments": false,
+    "strings": true
+  }
+}

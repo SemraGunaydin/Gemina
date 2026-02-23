@@ -1,7 +1,16 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import qs from "query-string";
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
+import { AspectRatioKey, aspectRatioOptions } from "@/constants";
+import { FormUrlQueryParams, ImageType, RemoveUrlQueryParams } from "@/types";
 
-
+interface ImageProps {
+  aspectRatio?: string;
+  width?: number;
+  height?: number;
+  [key: string]: any;
+}
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -48,8 +57,38 @@ export const dataUrl = `data:image/svg+xml;base64,${toBase64(
   shimmer(1000, 1000)
 )}`;
 
+// FORM URL QUERY
+export const formUrlQuery = ({
+  searchParams,
+  key,
+  value,
+}: FormUrlQueryParams) => {
+  const params = { ...qs.parse(searchParams.toString()), [key]: value };
 
-  
+  return `${window.location.pathname}?${qs.stringify(params, {
+    skipNull: true,
+  })}`;
+};
+
+// REMOVE KEY FROM QUERY
+export function removeKeysFromQuery({
+  searchParams,
+  keysToRemove,
+}: RemoveUrlQueryParams) {
+  const currentUrl = qs.parse(searchParams);
+
+  keysToRemove.forEach((key) => {
+    delete currentUrl[key];
+  });
+
+  // Remove null or undefined values
+  Object.keys(currentUrl).forEach(
+    (key) => currentUrl[key] == null && delete currentUrl[key]
+  );
+
+  return `${window.location.pathname}?${qs.stringify(currentUrl)}`;
+}
+
 // DEBOUNCE
 export const debounce = <T extends (...args: unknown[]) => void>(
   func: T,
@@ -63,8 +102,30 @@ export const debounce = <T extends (...args: unknown[]) => void>(
   };
 };
 
+// GET IMAGE SIZE
+export const getImageSize = (
+  type: string,
+  image: ImageType | null,
+  dimension: "width" | "height"
+): number => {
+  // 1. Safety check: Return default if image is null or undefined
+  if (!image) return 1000;
 
+  if (type === "fill") {
+    // 2. Cast the string to AspectRatioKey to match our defined options
+    const ratioKey = image.aspectRatio as AspectRatioKey;
 
+    // 3. Safe access: Check if the key exists in our options object
+    const option = aspectRatioOptions[ratioKey];
+
+    // 4. Return the specific dimension (width/height) or a fallback
+    return option ? option[dimension] : 1000;
+  }
+
+  // 5. Dynamic data retrieval: Ensure the value is a number before returning
+  const value = image[dimension as keyof ImageType];
+  return typeof value === "number" ? value : 1000;
+};
 // DOWNLOAD IMAGE
 export const download = (url: string, filename: string) => {
   if (!url) {
@@ -88,7 +149,7 @@ export const download = (url: string, filename: string) => {
 
 // DEEP MERGE OBJECTS
 export const deepMergeObjects = (obj1: any, obj2: any) => {
-  if(obj2 === null || obj2 === undefined) {
+  if (obj2 === null || obj2 === undefined) {
     return obj1;
   }
 
