@@ -1,36 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Gemina AI - Full Stack AI Image SaaS Platform
 
-## Getting Started
+Gemina AI is a modern SaaS application that allows users to transform images using AI-powered tools. The platform features a robust credit system, secure payments, and seamless user authentication.
 
-First, run the development server:
+## 🚀 Live Demo
+**Check out the live application:** [https://gemina-chi.vercel.app](https://gemina-chi.vercel.app)
 
+---
+
+## ✨ Features
+
+* **AI Image Transformation:** Advanced image processing capabilities (Inpainting, Object Removal, Color Restoration, etc.).
+* **Secure Authentication:** User management and social login integration via **Clerk**.
+* **Credit System:** A secure, usage-based credit system managed through a database.
+* **Payment Integration:** Fully functional payment gateway using **Stripe** for credit top-ups.
+* **Responsive Design:** Optimized for all devices using **Tailwind CSS**.
+* **Robust Database:** Scalable data management with **MongoDB**.
+
+---
+
+## 🛠️ Tech Stack
+
+* **Framework:** Next.js 15 (App Router)
+* **Language:** TypeScript
+* **Authentication:** Clerk
+* **Payments:** Stripe
+* **Database:** MongoDB
+* **Styling:** Tailwind CSS / Shadcn UI
+* **Deployment:** Vercel
+
+---
+
+## 📦 Getting Started
+
+### 1. Clone the repository:
 ```bash
+git clone [https://github.com/SemraGunaydin/Gemina.git](https://github.com/SemraGunaydin/Gemina.git)
+cd Gemina
+
+# 2. Install dependencies:
+npm install
+
+# 3. Set up Environment Variables:
+Create a .env.local file in the root directory and add your keys:
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
+CLERK_SECRET_KEY=
+MONGODB_URL=
+STRIPE_SECRET_KEY=
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=
+STRIPE_WEBHOOK_SECRET=
+
+# 4. Run the development server:
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+# 📸 Screenshots
+<img width="1900" height="868" alt="image" src="https://github.com/user-attachments/assets/e71b2d2c-62fa-4cae-a8b4-133fd747dd56" />
+<img width="1904" height="873" alt="image" src="https://github.com/user-attachments/assets/8b5f46cc-398a-406a-b901-a1773649d9a3" />
+<img width="1901" height="868" alt="image" src="https://github.com/user-attachments/assets/844dc502-f31e-4b36-bb4e-27759858d41e" />
+<img width="1904" height="870" alt="image" src="https://github.com/user-attachments/assets/afb9165a-63e3-42f2-b17c-bb98a0246dda" />
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+# 📝 License
+Distributed under the MIT License. See LICENSE for more information.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Developed by Semra Günaydın
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
