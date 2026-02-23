@@ -52,11 +52,6 @@ STRIPE_WEBHOOK_SECRET=
 # 4. Run the development server:
 npm run dev
 
-# 📸 Screenshots
-<img width="1900" height="868" alt="image" src="https://github.com/user-attachments/assets/e71b2d2c-62fa-4cae-a8b4-133fd747dd56" />
-<img width="1904" height="873" alt="image" src="https://github.com/user-attachments/assets/8b5f46cc-398a-406a-b901-a1773649d9a3" />
-<img width="1901" height="868" alt="image" src="https://github.com/user-attachments/assets/844dc502-f31e-4b36-bb4e-27759858d41e" />
-<img width="1904" height="870" alt="image" src="https://github.com/user-attachments/assets/afb9165a-63e3-42f2-b17c-bb98a0246dda" />
 
 # 📝 License
 Distributed under the MIT License. See LICENSE for more information.
